@@ -84,9 +84,9 @@ namespace CsharpPatternMatchingCheckpoint
             // Note: You will to define the Deconstruct method for Student
             return student switch
             {
-                var (_, _, tuitionPaid, grade) when grade == 'A' && tuitionPaid == true => true,
-                var (_, _, tuitionPaid, grade) when grade == 'B' && tuitionPaid == true => true,
-                var (_, _, tuitionPaid, grade) when grade == 'C' && tuitionPaid == true => true,
+                var (tuitionPaid, grade) when grade == 'A' && tuitionPaid == true => true,
+                var (tuitionPaid, grade) when grade == 'B' && tuitionPaid == true => true,
+                var (tuitionPaid, grade) when grade == 'C' && tuitionPaid == true => true,
                 _ => false
             };
         }
@@ -102,7 +102,7 @@ namespace CsharpPatternMatchingCheckpoint
         public Student(string firstName, string lastName, bool tuitionPaid, char grade) =>
             (FirstName, LastName, TuitionPaid, Grade) = (firstName, lastName, tuitionPaid, grade);
 
-        public void Deconstruct(out string firstName, out string lastName, out bool tuitionPaid, out char grade) =>
-            (firstName, lastName, tuitionPaid, grade) = (FirstName, LastName, TuitionPaid, Grade);
+        public void Deconstruct(out bool tuitionPaid, out char grade) =>
+            (tuitionPaid, grade) = (TuitionPaid, Grade);
     }
 }

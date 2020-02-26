@@ -155,9 +155,9 @@ namespace CsharpFeaturesFinalCheckpoint
             // Note: You will to define the Deconstruct method for Student
             return student switch
             {
-                var (_, _, _, tuitionPaid, grade) when grade == 'A' && tuitionPaid == true => true,
-                var (_, _, _, tuitionPaid, grade) when grade == 'B' && tuitionPaid == true => true,
-                var (_, _, _, tuitionPaid, grade) when grade == 'C' && tuitionPaid == true => true,
+                var (tuitionPaid, grade) when grade == 'A' && tuitionPaid == true => true,
+                var (tuitionPaid, grade) when grade == 'B' && tuitionPaid == true => true,
+                var (tuitionPaid, grade) when grade == 'C' && tuitionPaid == true => true,
                 _ => false
             };
         }
@@ -174,8 +174,8 @@ namespace CsharpFeaturesFinalCheckpoint
         public Student(string firstName, string lastName, string email, bool tuitionPaid, char grade) =>
             (FirstName, LastName, Email, TuitionPaid, Grade) = (firstName, lastName, email, tuitionPaid, grade);
 
-        public void Deconstruct(out string firstName, out string lastName, out string email, out bool tuitionPaid, out char grade) =>
-           (firstName, lastName, email, tuitionPaid, grade) = (FirstName, LastName, Email, TuitionPaid, Grade);
+        public void Deconstruct(out bool tuitionPaid, out char grade) =>
+           (tuitionPaid, grade) = (TuitionPaid, Grade);
 
         public Student()
         {
