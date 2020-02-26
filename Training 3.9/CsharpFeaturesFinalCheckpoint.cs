@@ -133,8 +133,6 @@ namespace CsharpFeaturesFinalCheckpoint
                 { Grade: 'A', TuitionPaid: true } => true,
                 { Grade: 'B', TuitionPaid: true } => true,
                 { Grade: 'C', TuitionPaid: true } => true,
-                { Grade: 'D', TuitionPaid: true } => false,
-                { Grade: 'F', TuitionPaid: true } => false,
                 _ => false
             };
         }
@@ -147,8 +145,6 @@ namespace CsharpFeaturesFinalCheckpoint
                     (true, 'A') => true,
                     (true, 'B') => true,
                     (true, 'C') => true,
-                    (true, 'D') => false,
-                    (true, 'E') => false,
                     (_, _) => false
                 };
         }
@@ -159,11 +155,9 @@ namespace CsharpFeaturesFinalCheckpoint
             // Note: You will to define the Deconstruct method for Student
             return student switch
             {
-                var (firstName, lastName, email, tuitionPaid, grade) when grade == 'A' && tuitionPaid == true => true,
-                var (firstName, lastName, email, tuitionPaid, grade) when grade == 'B' && tuitionPaid == true => true,
-                var (firstName, lastName, email, tuitionPaid, grade) when grade == 'C' && tuitionPaid == true => true,
-                var (firstName, lastName, email, tuitionPaid, grade) when grade == 'D' && tuitionPaid == true => false,
-                var (firstName, lastName, email, tuitionPaid, grade) when grade == 'F' && tuitionPaid == true => false,
+                var (_, _, _, tuitionPaid, grade) when grade == 'A' && tuitionPaid == true => true,
+                var (_, _, _, tuitionPaid, grade) when grade == 'B' && tuitionPaid == true => true,
+                var (_, _, _, tuitionPaid, grade) when grade == 'C' && tuitionPaid == true => true,
                 _ => false
             };
         }
